@@ -44,13 +44,17 @@ public class moveplayer : MonoBehaviour
         camDirection();
 
         move_player = player_speed_imput.x * cam_mira_derecha + player_speed_imput.z * cam_mira_recto;
+        controler.transform.LookAt(controler.transform.position + move_player);
+        SetGravity();
+        PlayerSkills();
+
         move_player = move_player * speed_v;  // mobimiento del player
         controler.Move(move_player * Time.deltaTime);
 
-        controler.transform.LookAt(controler.transform.position + move_player);
+        
 
-      
-        PlayerSkills();
+        
+        
     }
     void camDirection()    //reotacion del player  con respeco a una cam
     {
@@ -72,7 +76,22 @@ public class moveplayer : MonoBehaviour
             move_player.y = fall_v;
         }
     }
+
     
+    void SetGravity()   //gravedad
+    {
+        if (controler.isGrounded)
+        {
+            fall_v = -gravedad * Time.deltaTime;
+            move_player.y = fall_v;
+        }
+        else
+        {
+            fall_v -= gravedad * Time.deltaTime;
+            move_player.y = fall_v;
+        }
+       
+    }
 
 
    
