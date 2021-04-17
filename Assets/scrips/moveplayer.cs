@@ -11,7 +11,7 @@ public class moveplayer : MonoBehaviour
     public float speed_v;
     public Vector3 move_player;
     public Joystick joistik;
-
+    public bool salto = false;
 
     
     private Vector3 player_speed_imput; // limitar velocidad
@@ -40,17 +40,19 @@ public class moveplayer : MonoBehaviour
         horizonal_move = joistik.Horizontal;    
         vertical_move = joistik.Vertical;
         player_speed_imput = new Vector3(horizonal_move, 0, vertical_move);
-       
         player_speed_imput = Vector3.ClampMagnitude(player_speed_imput, 1);
+       
         camDirection();
 
         move_player = player_speed_imput.x * cam_mira_derecha + player_speed_imput.z * cam_mira_recto;
+        
         controler.transform.LookAt(controler.transform.position + move_player);
         SetGravity();
         
 
         move_player = move_player * speed_v;  // mobimiento del player
         controler.Move(move_player * Time.deltaTime);
+       
 
         
 
@@ -69,15 +71,20 @@ public class moveplayer : MonoBehaviour
         
     }
 
-    void PlayerSkills()
+     public void PlayerSkills()
     {
+        salto = true;
         if (controler.isGrounded)
         {
             fall_v = jum_force;
             move_player.y = fall_v;
+            Debug.Log("Hola");
         }
+        
+        
     }
 
+   
     
     void SetGravity()   //gravedad
     {
