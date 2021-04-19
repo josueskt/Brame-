@@ -52,13 +52,14 @@ public class moveplayer : MonoBehaviour
         {
             fall_v = jum_force;
             move_player.y = fall_v;
-            Debug.Log("Hola");
-           
-        }
-        else
-        {
             salto = false;
+
+
         }
+        
+        
+            
+        
 
 
         move_player = move_player * speed_v;  // mobimiento del player
