@@ -312,12 +312,12 @@ PrefabInstance:
     - target: {fileID: 2929252283123773938, guid: aaa2c939c0359ac4dbce3f49e8b90252,
         type: 3}
       propertyPath: m_Pivot.x
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 2929252283123773938, guid: aaa2c939c0359ac4dbce3f49e8b90252,
         type: 3}
       propertyPath: m_Pivot.y
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 2929252283123773938, guid: aaa2c939c0359ac4dbce3f49e8b90252,
         type: 3}
@@ -402,12 +402,12 @@ PrefabInstance:
     - target: {fileID: 2929252283123773938, guid: aaa2c939c0359ac4dbce3f49e8b90252,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 45
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 2929252283123773938, guid: aaa2c939c0359ac4dbce3f49e8b90252,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 53
+      value: 120
       objectReference: {fileID: 0}
     - target: {fileID: 2929252283123773938, guid: aaa2c939c0359ac4dbce3f49e8b90252,
         type: 3}
@@ -689,6 +689,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: 'juego propio '
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 8adee7cb6e8e0964194979c29d9cc76c,
+        type: 3}
+      propertyPath: m_TagString
+      value: Terrain
+      objectReference: {fileID: 0}
     - target: {fileID: 7489287890313216718, guid: 8adee7cb6e8e0964194979c29d9cc76c,
         type: 3}
       propertyPath: m_Enabled
@@ -727,7 +732,7 @@ GameObject:
   - component: {fileID: 963194228}
   - component: {fileID: 963194227}
   - component: {fileID: 963194226}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: camera player
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
@@ -1015,15 +1020,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99885f16dfc74004ca42deecd84a0354, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  distancia: 5
-  altura: 1.1150463
+  distancia: 3
+  altura: -51.17
   orbit_speed: 15
   vertical_speed: 2
   player_cam: {fileID: 963194228}
   center_punto: {fileID: 716533671}
   touch: {fileID: 711744596}
-  maxima_altura: 2
-  minima_altura: -1
+  maxima_altura: 2.5
+  minima_altura: -2
 --- !u!4 &1973446472 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 062232d4a581bb64da158d4c30f12644,

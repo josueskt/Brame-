@@ -8,6 +8,12 @@ public class camera : MonoBehaviour
     public Transform player_cam, center_punto;
     public FixedTouchField touch;
     public float maxima_altura, minima_altura;
+    
+    //coliciones de la camara
+    Vector3 dest;
+    RaycastHit hit;
+
+
 
 
     // Start is called before the first frame update
@@ -19,7 +25,7 @@ public class camera : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        center_punto.position = gameObject.transform.position + new Vector3(0, 1.57f, 0);
+        center_punto.position = gameObject.transform.position + new Vector3(0, 0.5f, 0);
         center_punto.eulerAngles += new Vector3(0, touch.TouchDist.x * Time.deltaTime * orbit_speed, 0);
         altura += touch.TouchDist.y * Time.deltaTime * vertical_speed;
         altura = Mathf.Clamp(altura, minima_altura, maxima_altura);
@@ -27,7 +33,15 @@ public class camera : MonoBehaviour
 
     private void LateUpdate()
     {
-        player_cam.position = center_punto.position + center_punto.forward * 1 * distancia + Vector3.up * altura;
+        dest = center_punto.position + center_punto.forward * 1 * distancia + Vector3.up * altura;
+        if(Physics.Linecast(center_punto.position, dest , out hit))
+        {
+            if (hit.collider.CompareTag("Terrain"))
+            {
+                player_cam.position = hit.point + hit.normal * 0.14f;
+            }     
+        }
+        player_cam.position = Vector3.Lerp(player_cam.position, dest, Time.deltaTime * 10);
         player_cam.LookAt(center_punto);
 
 
