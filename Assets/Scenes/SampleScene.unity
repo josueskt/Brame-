@@ -1130,6 +1130,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99885f16dfc74004ca42deecd84a0354, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  distancia: 3
+  altura: 0
+  orbit_speed: 15
+  vertical_speed: 5
+  player_cam: {fileID: 963194228}
+  center_punto: {fileID: 716533671}
+  touch: {fileID: 711744596}
+  maxima_altura: 2
+  minima_altura: -1
 --- !u!1 &1380936737
 GameObject:
   m_ObjectHideFlags: 0
