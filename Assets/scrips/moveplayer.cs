@@ -25,6 +25,9 @@ public class moveplayer : MonoBehaviour
     public float gravedad = 9.8f;
     public float fall_v;
     public float jum_force;
+    //animator
+    public Animator Animator_controller;
+
 
 
 
@@ -32,6 +35,8 @@ public class moveplayer : MonoBehaviour
     void Start()
     {
         controler = GetComponent<CharacterController>();
+        Animator_controller = GetComponent<Animator>();          
+
     }
 
     
@@ -41,18 +46,22 @@ public class moveplayer : MonoBehaviour
         vertical_move = joistik.Vertical;
         player_speed_imput = new Vector3(horizonal_move, 0, vertical_move);
         player_speed_imput = Vector3.ClampMagnitude(player_speed_imput, 1);
-       
+
+        Animator_controller.SetFloat("move_walk", player_speed_imput.magnitude * speed_v);
+
         camDirection();
 
         move_player = player_speed_imput.x * cam_mira_derecha + player_speed_imput.z * cam_mira_recto;
         
         controler.transform.LookAt(controler.transform.position + move_player);
+       
         SetGravity();
         if (controler.isGrounded && salto )
         {
             fall_v = jum_force;
             move_player.y = fall_v;
             salto = false;
+            Animator_controller.SetTrigger("jump");
 
 
         }
@@ -103,10 +112,13 @@ public class moveplayer : MonoBehaviour
         {
             fall_v -= gravedad * Time.deltaTime;
             move_player.y = fall_v;
+            Animator_controller.SetFloat("move_vertical", controler.velocity.y);
         }
+        Animator_controller.SetBool("callendo", controler.isGrounded);
        
     }
 
-
    
+
+
 }
